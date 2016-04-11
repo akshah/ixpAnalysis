@@ -35,9 +35,10 @@ if __name__ == "__main__":
 
     logfilename=None
     configfile=None
+    ASN=None
 
     try:
-        opts,args = getopt.getopt(sys.argv[1:],'c:h',['configfile','help'])
+        opts,args = getopt.getopt(sys.argv[1:],'c:h:a',['configfile','help','ASN'])
     except getopt.GetoptError:
         usage('GetoptError: Arguments not correct')
 
@@ -47,6 +48,12 @@ if __name__ == "__main__":
             sys.exit(2)
         elif opt in ('-c', '--configfile'):
             configfile = arg
+        elif opt in ('-a', '--ASN'):
+            ASN = arg
+
+    if not ASN:
+        print('Give an ASN.')
+        exit(0)
 
     #Load config file
     config = configparser.ConfigParser()
@@ -74,9 +81,8 @@ if __name__ == "__main__":
                                   db=config['MySQL']['dbname'])
         logger.info('Test connection to MySQL server on ' + config['MySQL']['serverIP'] + ":" + config['MySQL']['serverPort'] + ' successful.')
         #Lookup AS
-        AS="210"
 
-        ixpList=getIXPList(db,AS)
+        ixpList=getIXPList(db,ASN)
         print(ixpList)
         db.close()
     except:
