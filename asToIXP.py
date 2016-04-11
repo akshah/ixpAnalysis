@@ -48,7 +48,7 @@ if __name__ == "__main__":
             sys.exit(2)
         elif opt in ('-c', '--configfile'):
             configfile = arg
-        elif opt in ('-a', '--ASN'):
+        elif opt in ('-a', '--asn'):
             ASN = arg
 
     if not ASN:
