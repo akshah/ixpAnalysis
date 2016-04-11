@@ -7,6 +7,7 @@ import configparser
 import getopt
 import pymysql
 import traceback
+import pprint
 
 def usage(msg="Usage"):
     print(msg)
@@ -14,14 +15,21 @@ def usage(msg="Usage"):
     sys.exit(2)
 
 def getIXPList(db,AS):
-    ixpList=[]
+    ixpList={}
     with closing(db.cursor()) as cur:
         try:
             query = "SELECT p.ID,ASn,ShortName,Name,City,Country,Continent FROM participants p ,ixps i where  p.ID=i.ID and ASn = '{0}'".format(AS)
             cur.execute(query)
             row = cur.fetchone()
             while row is not None:
-                ixpList.append(row)
+                (ixpid,asn,shortName,name,city,country,continent)=row
+                ixpList[ixpid]={}
+                ixpList[ixpid]['asn']=asn
+                ixpList[ixpid]['shortName']=shortName
+                ixpList[ixpid]['name']=name
+                ixpList[ixpid]['city']=city
+                ixpList[ixpid]['country']=country
+                ixpList[ixpid]['continent']=continent
                 row = cur.fetchone()
         except:
             logger.error('IXP fetch failed!')
@@ -38,7 +46,6 @@ if __name__ == "__main__":
     ASN=None
 
     try:
-        #opts,args = getopt.getopt(sys.argv[1:],'l:c:o:d:h',['logfile','cachefile','outputfile','directory','help'])
         opts,args = getopt.getopt(sys.argv[1:],'c:a:h',['configfile','asn','help'])
     except getopt.GetoptError:
         usage('GetoptError: Arguments not correct')
@@ -86,7 +93,8 @@ if __name__ == "__main__":
         #Lookup AS
 
         ixpList=getIXPList(db,ASN)
-        print(ixpList)
+        pp=pprint()
+        pp.pprint(ixpList)
         db.close()
     except:
         traceback.print_exc()
