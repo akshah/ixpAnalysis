@@ -15,7 +15,7 @@ def usage(msg="Usage"):
     sys.exit(2)
 
 def getIXPList(db,AS):
-    ixpList={}
+    ixpDict={}
     with closing(db.cursor()) as cur:
         try:
             query = "SELECT p.ID,ASn,ShortName,Name,City,Country,Continent FROM participants p ,ixps i where  p.ID=i.ID and ASn = '{0}'".format(AS)
@@ -33,7 +33,13 @@ def getIXPList(db,AS):
                 row = cur.fetchone()
         except:
             logger.error('IXP fetch failed!')
-    return ixpList
+    return ixpDict
+
+def getCountriesFromIXPDict(ixpDict):
+    countrySet=set()
+    for ixpID in ixpDict.keys():
+        countrySet.add(ixpDict[ixpID]['country'])
+    return countrySet
 
 if __name__ == "__main__":
 
@@ -92,9 +98,11 @@ if __name__ == "__main__":
         logger.info('Test connection to MySQL server on ' + config['MySQL']['serverIP'] + ":" + config['MySQL']['serverPort'] + ' successful.')
         #Lookup AS
 
-        ixpList=getIXPList(db,ASN)
+        ixpDict=getIXPList(db,ASN)
         pp = pprint.PrettyPrinter(indent=4)
-        pp.pprint(ixpList)
+        pp.pprint(ixpDict)
+        countriesSet=getCountriesFromIXPDict(ixpDict)
+        pp.pprint(countriesSet)
         db.close()
     except:
         traceback.print_exc()
