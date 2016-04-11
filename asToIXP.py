@@ -38,7 +38,7 @@ if __name__ == "__main__":
     ASN=None
 
     try:
-        opts,args = getopt.getopt(sys.argv[1:],'c:h:a',['configfile','help','ASN'])
+        opts,args = getopt.getopt(sys.argv[1:],'c:h:a',['configfile','help','asn'])
     except getopt.GetoptError:
         usage('GetoptError: Arguments not correct')
 
@@ -56,6 +56,8 @@ if __name__ == "__main__":
         exit(0)
 
     #Load config file
+    if not configfile:
+        configfile="conf/ixpAnalysis.conf"
     config = configparser.ConfigParser()
     try:
         config.sections()
