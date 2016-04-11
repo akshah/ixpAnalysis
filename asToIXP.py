@@ -38,7 +38,8 @@ if __name__ == "__main__":
     ASN=None
 
     try:
-        opts,args = getopt.getopt(sys.argv[1:],'c:h:a',['configfile','help','asn'])
+        #opts,args = getopt.getopt(sys.argv[1:],'l:c:o:d:h',['logfile','cachefile','outputfile','directory','help'])
+        opts,args = getopt.getopt(sys.argv[1:],'c:a:h',['configfile','asn','help'])
     except getopt.GetoptError:
         usage('GetoptError: Arguments not correct')
 
