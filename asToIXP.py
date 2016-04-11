@@ -14,7 +14,7 @@ def getIXPList(db,AS):
     ixpList=[]
     with closing(db.cursor()) as cur:
         try:
-            query = "SELECT p.ID,ASn,ShortName,Name,City,Country,Continent FROM participants p ,ixps i where  p.ID=i.ID and ASn = "{0}"".format(AS)
+            query = "SELECT p.ID,ASn,ShortName,Name,City,Country,Continent FROM participants p ,ixps i where  p.ID=i.ID and ASn = '{0}'".format(AS)
             cur.execute(query)
             row = cur.fetchone()
             while row is not None:
