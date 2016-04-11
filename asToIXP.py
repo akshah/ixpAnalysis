@@ -74,7 +74,7 @@ if __name__ == "__main__":
         AS="210"
 
         ixpList=getIXPList(db,AS)
-
+        print(ixpList)
         db.close()
     except:
         logger.warn('DB connection not valid.')
