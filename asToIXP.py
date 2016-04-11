@@ -23,13 +23,13 @@ def getIXPList(db,AS):
             row = cur.fetchone()
             while row is not None:
                 (ixpid,asn,shortName,name,city,country,continent)=row
-                ixpList[ixpid]={}
-                ixpList[ixpid]['asn']=asn
-                ixpList[ixpid]['shortName']=shortName
-                ixpList[ixpid]['name']=name
-                ixpList[ixpid]['city']=city
-                ixpList[ixpid]['country']=country
-                ixpList[ixpid]['continent']=continent
+                ixpDict[ixpid]={}
+                ixpDict[ixpid]['asn']=asn
+                ixpDict[ixpid]['shortName']=shortName
+                ixpDict[ixpid]['name']=name
+                ixpDict[ixpid]['city']=city
+                ixpDict[ixpid]['country']=country
+                ixpDict[ixpid]['continent']=continent
                 row = cur.fetchone()
         except:
             logger.error('IXP fetch failed!')
