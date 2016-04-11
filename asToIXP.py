@@ -70,13 +70,14 @@ if __name__ == "__main__":
                                   passwd=config['MySQL']['password'],
                                   db=config['MySQL']['dbname'])
         logger.info('Test connection to MySQL server on ' + config['MySQL']['serverIP'] + ":" + config['MySQL']['serverPort'] + ' successful.')
+        #Lookup AS
+        AS="210"
+
+        ixpList=getIXPList(db,AS)
+
+        db.close()
     except:
         logger.warn('DB connection not valid.')
 
-    #Lookup AS
-    AS="210"
 
-    ixpList=getIXPList(db,AS)
-
-    db.close()
 
