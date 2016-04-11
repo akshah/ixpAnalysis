@@ -5,6 +5,7 @@ from customUtilities.logger import logger
 import configparser
 import getopt
 import pymysql
+import traceback
 
 def usage(msg="Usage"):
     print(msg)
@@ -78,6 +79,7 @@ if __name__ == "__main__":
         print(ixpList)
         db.close()
     except:
+        traceback.print_exc()
         logger.warn('DB connection not valid.')
 
 
