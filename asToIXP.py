@@ -93,7 +93,7 @@ if __name__ == "__main__":
         #Lookup AS
 
         ixpList=getIXPList(db,ASN)
-        pp=pprint()
+        pp=pprint.pprint()
         pp.pprint(ixpList)
         db.close()
     except:
