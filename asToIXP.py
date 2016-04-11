@@ -25,7 +25,6 @@ def getIXPList(db,AS):
     return ixpList
 
 if __name__ == "__main__":
-    start_time,_=current_time()
 
     if sys.version_info < (3,0):
         print("ERROR: Please use python3.")
