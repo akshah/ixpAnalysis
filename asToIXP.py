@@ -21,7 +21,7 @@ def getIXPList(db,AS):
                 ixpList.append(row)
                 row = cur.fetchone()
         except:
-            self.logger.error('IXP fetch failed!')
+            logger.error('IXP fetch failed!')
     return ixpList
 
 if __name__ == "__main__":
@@ -62,8 +62,6 @@ if __name__ == "__main__":
         logfilename=scriptname[0]+'.log'
     logger=logger(logfilename)
 
-    self.configfile = configfile
-
 
     try:
         db = pymysql.connect(host=config['MySQL']['serverIP'],
@@ -73,7 +71,7 @@ if __name__ == "__main__":
                                   db=config['MySQL']['dbname'])
         logger.info('Test connection to MySQL server on ' + config['MySQL']['serverIP'] + ":" + config['MySQL']['serverPort'] + ' successful.')
     except:
-        self.logger.warn('DB connection not valid.')
+        logger.warn('DB connection not valid.')
 
     #Lookup AS
     AS="210"
