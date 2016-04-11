@@ -2,6 +2,7 @@
 
 from customUtilities.helperFunctions import *
 from customUtilities.logger import logger
+from contextlib import closing
 import configparser
 import getopt
 import pymysql
