@@ -4,6 +4,7 @@ from customUtilities.helperFunctions import *
 from customUtilities.logger import logger
 import configparser
 import getopt
+import pymysql
 
 def usage(msg="Usage"):
     print(msg)
