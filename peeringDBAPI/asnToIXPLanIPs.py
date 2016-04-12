@@ -1,5 +1,5 @@
 #!/usr/bin/python2.7
-
+from __future__ import print_function
 from customUtilities.helperFunctions import *
 from peeringdb import PeeringDB
 from contextlib import closing
