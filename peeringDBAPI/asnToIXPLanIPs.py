@@ -23,7 +23,8 @@ if __name__ == "__main__":
     asIPDict={}
     with closing(open('asMasterList.txt','r')) as fp:
         for line in fp:
-            asIPDict[line]=[]
+            AS=line.rstrip('\n')
+            asIPDict[AS]=[]
     for AS in asIPDict.keys():
         asIPDict[line]=getIXPFromPeeringDB(AS)
         with closing (open('asIXPLanIP.txt','a+')) as wrt:
