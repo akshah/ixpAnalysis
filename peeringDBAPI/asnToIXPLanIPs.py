@@ -8,9 +8,9 @@ def getIXPFromPeeringDB(AS):
     pdb = PeeringDB()
     ipList=[]
     retValList=eval(str(pdb.asn(AS)))
-    print(retValList)
+    #print(retValList)
     netIXPsList=eval(str(retValList[0]['netixlan_set']))
-    print(netIXPsList)
+    #print(netIXPsList)
     for netixp in netIXPsList:
         ipList.append(netixp['ipaddr4'])
     return ipList
@@ -28,7 +28,7 @@ if __name__ == "__main__":
     for AS in asIPDict.keys():
         asIPDict[line]=getIXPFromPeeringDB(AS)
         with closing (open('asIXPLanIP.txt','a+')) as wrt:
-            print(line+"|"+asIPDict[line])
+            print(line+"|"+str(asIPDict[line]))
 
 
 
