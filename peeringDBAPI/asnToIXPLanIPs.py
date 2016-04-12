@@ -19,12 +19,12 @@ if __name__ == "__main__":
         print("ERROR: Please use python2.7. "+str(sys.version_info))
         exit(0)
     asIPDict={}
-    with closing(open('asMasterList.txt'),'r') as fp:
+    with closing(open('asMasterList.txt','r')) as fp:
         for line in fp:
             asIPDict[line]=[]
     for AS in asList:
         asIPDict[line]=getIXPFromPeeringDB(ASN)
-        with closing (open('asIXPLanIP.txt'),'a+') as wrt:
+        with closing (open('asIXPLanIP.txt','a+')) as wrt:
             print(line+"|"+asIPDict[line])
 
 
