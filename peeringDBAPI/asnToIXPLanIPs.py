@@ -28,7 +28,7 @@ if __name__ == "__main__":
     for AS in asIPDict.keys():
         asIPDict[line]=getIXPFromPeeringDB(AS)
         with closing (open('asIXPLanIP.txt','a+')) as wrt:
-            print(AS+"|"+str(asIPDict[line]))
+            print(AS+"|"+str(asIPDict[line]),file=wrt)
 
 
 
