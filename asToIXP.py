@@ -102,7 +102,7 @@ if __name__ == "__main__":
         logfilename=scriptname[0]+'.log'
     logger=logger(logfilename)
 
-    mm=MaxMindRepo('')
+    mm = MaxMindRepo('/home3/akshah/akshah_cron_bin/latest_maxmind_bin')
 
     try:
         db = pymysql.connect(host=config['MySQL']['serverIP'],
