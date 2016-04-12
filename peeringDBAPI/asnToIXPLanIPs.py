@@ -7,12 +7,14 @@ from contextlib import closing
 def getIXPFromPeeringDB(AS):
     pdb = PeeringDB()
     ipList=[]
-    retValList=eval(str(pdb.asn(AS)))
-    #print(retValList)
-    netIXPsList=eval(str(retValList[0]['netixlan_set']))
-    #print(netIXPsList)
-    for netixp in netIXPsList:
-        ipList.append(netixp['ipaddr4'])
+    ret=pdb.asn(AS)
+    if ret:
+        retValList=eval(str(ret))
+        #print(retValList)
+        netIXPsList=eval(str(retValList[0]['netixlan_set']))
+        #print(netIXPsList)
+        for netixp in netIXPsList:
+            ipList.append(netixp['ipaddr4'])
     return ipList
 
 if __name__ == "__main__":
