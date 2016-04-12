@@ -23,7 +23,7 @@ def getIXPFromPeeringDB(AS):
     retValList=eval(pdb.asn(AS))
     netIXPsList=eval(retValList[0]['netixlan_set'])
     for netixp in netIXPsList:
-        localCountrySet=mm.ipToCountry(netixp['ipaddr4']))
+        localCountrySet=mm.ipToCountry(netixp['ipaddr4'])
             for ct in localCountrySet:
                 countriesSet.add(ct)
     return countriesSet
