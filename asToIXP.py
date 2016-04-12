@@ -8,11 +8,25 @@ import getopt
 import pymysql
 import traceback
 import pprint
+from peeringdb import PeeringDB
+from geoInfo.MaxMindRepo import MaxMindRepo
+
 
 def usage(msg="Usage"):
     print(msg)
     print('python3 '+sys.argv[0]+' [-l LOGFILE] -c CONFIG_FILE [-h]')
     sys.exit(2)
+
+def getIXPFromPeeringDB(AS):
+    pdb = PeeringDB()
+    countriesSet=set()
+    retValList=eval(pdb.asn(AS))
+    netIXPsList=eval(retValList[0]['netixlan_set'])
+    for netixp in netIXPsList:
+        localCountrySet=mm.ipToCountry(netixp['ipaddr4']))
+            for ct in localCountrySet:
+                countriesSet.add(ct)
+    return countriesSet
 
 def getIXPList(db,AS):
     ixpDict={}
@@ -88,6 +102,7 @@ if __name__ == "__main__":
         logfilename=scriptname[0]+'.log'
     logger=logger(logfilename)
 
+    mm=MaxMindRepo('')
 
     try:
         db = pymysql.connect(host=config['MySQL']['serverIP'],
@@ -104,6 +119,8 @@ if __name__ == "__main__":
         countriesSet=getCountriesFromIXPDict(ixpDict)
         pp.pprint(countriesSet)
         db.close()
+        countriesFromPeerinDB=getIXPFromPeeringDB(ASN)
+        pp.pprint(countriesFromPeerinDB)
     except:
         traceback.print_exc()
         logger.warn('DB connection not valid.')
