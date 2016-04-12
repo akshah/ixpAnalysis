@@ -27,8 +27,8 @@
       <file leaf-file-name="asToIXP.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/asToIXP.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.50215983">
-              <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.4211663">
+              <caret line="60" column="67" selection-start-line="60" selection-start-column="67" selection-end-line="60" selection-end-column="67" />
               <folding>
                 <element signature="e#20#65#0" expanded="true" />
               </folding>
@@ -420,7 +420,13 @@
       <option name="project" value="LOCAL" />
       <updated>1460439864944</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Python version test">
+      <created>1460439922484</created>
+      <option name="number" value="00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1460439922484</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -638,8 +644,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/asToIXP.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.50215983">
-          <caret line="60" column="40" selection-start-line="60" selection-start-column="40" selection-end-line="60" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.4211663">
+          <caret line="60" column="67" selection-start-line="60" selection-start-column="67" selection-end-line="60" selection-end-column="67" />
           <folding>
             <element signature="e#20#65#0" expanded="true" />
           </folding>
