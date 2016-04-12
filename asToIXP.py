@@ -57,7 +57,7 @@ def getCountriesFromIXPDict(ixpDict):
 
 if __name__ == "__main__":
 
-    if sys.version_info < (2,7) or sys.version_info > (2,5):
+    if sys.version_info < (2,7) or sys.version_info > (2,7):
         print("ERROR: Please use python2.7.")
         exit(0)
 
