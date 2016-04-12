@@ -5,7 +5,7 @@ from customUtilities.logger import logger
 from contextlib import closing
 import configparser
 import getopt
-import pymysql
+import MySQLdb as pymysql
 import traceback
 import pprint
 from peeringdb import PeeringDB
